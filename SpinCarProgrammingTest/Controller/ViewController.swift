@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchView: UIView!
     
-    var imagesArray = [Value]()
+    var images = [Image]()
 
     var countString = ""
     var searchedString = ""
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     // Parse JSON from Bing Image Search API
-    func fetchImages(completion: @escaping () -> Void) {
+    func fetchImages(completion: @escaping ([Image]) -> Void) {
         let url = URL(string: "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=\(searchedString)&count=\(countString)")!
 
         var request = URLRequest(url: url)
@@ -75,14 +75,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // to avoid non optional in JSONDecoder
             guard let data = data else { return }
 
+            var images = [Image]()
+
             do {
                 let decoder = JSONDecoder()
                 // decode object
-                let downloadedData = try decoder.decode(Images.self, from: data)
-                self.imagesArray.append(contentsOf: downloadedData.value)
+                let downloadedData = try decoder.decode(ImagesResult.self, from: data)
+                images.append(contentsOf: downloadedData.images)
 
                 DispatchQueue.main.async {
-                    completion()
+                    completion(images)
                 }
 
             } catch {
@@ -97,13 +99,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imagesArray.count
+        return images.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ImagesTableViewCell else { return UITableViewCell() }
 
-        cell.searchedImage.loadImageUsingCacheWithUrlString(urlString: imagesArray[indexPath.row].thumbnailURL)
+        cell.searchedImage.loadImageUsingCacheWithUrlString(urlString: images[indexPath.row].thumbnailURL)
 
         return cell
     }
@@ -154,12 +156,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.view.endEditing(true)
 
         // Clear all 3 of these so if a user does a new search the previous search results won't be there
-        imagesArray.removeAll()
+        images.removeAll()
         searchedString.removeAll()
         countString.removeAll()
     }
 
-    func updateImages() {
+    func updateImages(images: [Image]) {
+        self.images = images
         self.activityIndicator.stopAnimating()
         self.tableView.reloadData()
         // Starts back at the top after new search

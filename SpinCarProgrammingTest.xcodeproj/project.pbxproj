@@ -12,7 +12,7 @@
 		FB40929823201E4500689C88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB40929623201E4500689C88 /* Main.storyboard */; };
 		FB40929A23201E4800689C88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB40929923201E4800689C88 /* Assets.xcassets */; };
 		FB40929D23201E4800689C88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB40929B23201E4800689C88 /* LaunchScreen.storyboard */; };
-		FB4092C8232023B300689C88 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4092C7232023B300689C88 /* Images.swift */; };
+		FB4092C8232023B300689C88 /* ImagesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4092C7232023B300689C88 /* ImagesResult.swift */; };
 		FB4092D023202FF600689C88 /* ImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4092CF23202FF600689C88 /* ImagesTableViewCell.swift */; };
 		FB4092D92320A7EE00689C88 /* ImagesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4092D82320A7EE00689C88 /* ImagesExtension.swift */; };
 		FB4092DD2320CB3600689C88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FB4092DC2320CB3600689C88 /* README.md */; };
@@ -26,7 +26,7 @@
 		FB40929923201E4800689C88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB40929C23201E4800689C88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB40929E23201E4800689C88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB4092C7232023B300689C88 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		FB4092C7232023B300689C88 /* ImagesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResult.swift; sourceTree = "<group>"; };
 		FB4092CF23202FF600689C88 /* ImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewCell.swift; sourceTree = "<group>"; };
 		FB4092D82320A7EE00689C88 /* ImagesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesExtension.swift; sourceTree = "<group>"; };
 		FB4092DC2320CB3600689C88 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		FB4092C42320238000689C88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB4092C7232023B300689C88 /* Images.swift */,
+				FB4092C7232023B300689C88 /* ImagesResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 			files = (
 				FB40929523201E4500689C88 /* ViewController.swift in Sources */,
 				FB4092D023202FF600689C88 /* ImagesTableViewCell.swift in Sources */,
-				FB4092C8232023B300689C88 /* Images.swift in Sources */,
+				FB4092C8232023B300689C88 /* ImagesResult.swift in Sources */,
 				FB40929323201E4500689C88 /* AppDelegate.swift in Sources */,
 				FB4092D92320A7EE00689C88 /* ImagesExtension.swift in Sources */,
 			);

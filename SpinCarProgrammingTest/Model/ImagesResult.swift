@@ -9,16 +9,16 @@
 import Foundation
 
 // MARK: - Images
-struct Images: Codable {
-    let value: [Value]
+struct ImagesResult: Codable {
+    let images: [Image]
 
     enum CodingKeys: String, CodingKey {
-        case value
+        case images = "value"
     }
 }
 
 // MARK: - Value
-struct Value: Codable {
+struct Image: Codable {
     let thumbnailURL: String
 
     enum CodingKeys: String, CodingKey {
