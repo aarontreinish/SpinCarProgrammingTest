@@ -78,8 +78,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             var images = [Image]()
 
             do {
-                let decoder = JSONDecoder()
                 // decode object
+                let decoder = JSONDecoder()
                 let downloadedData = try decoder.decode(ImagesResult.self, from: data)
                 images.append(contentsOf: downloadedData.images)
 

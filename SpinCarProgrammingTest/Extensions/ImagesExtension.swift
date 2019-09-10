@@ -18,7 +18,7 @@ class CustomImageView: UIImageView {
 
         imageUrlString = urlString
 
-        let url = NSURL(string: urlString)
+        guard let url = NSURL(string: urlString) else { return }
 
         // Check cache for image
         if let cachedImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
@@ -27,19 +27,18 @@ class CustomImageView: UIImageView {
         }
 
         // Otherwise download images
-        URLSession.shared.dataTask(with: url! as URL, completionHandler: {(data, response, error) in
+        URLSession.shared.dataTask(with: url as URL, completionHandler: {(data, response, error) in
+            guard let data = data, let imageToCache = UIImage(data: data) else { return }
+
             if error != nil {
-                print(error)
+                print(error?.localizedDescription ?? "Error")
                 return
             }
             DispatchQueue.main.async {
-
-                let imageToCache = UIImage(data: data!)
-
                 if self.imageUrlString == urlString {
                     self.image = imageToCache
                 }
-                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
             }
         }).resume()
     }
